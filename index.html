@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEVA2 - Ascensor Inteligente</title>
+
+    <!-- Estilos CSS externos -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navegación -->
+    <header>
+        <nav>
+            <a href="#inicio" class="logo">ELEVA<span>2</span></a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#que-es">¿Qué es?</a></li>
+                <li><a href="#como-funciona">Funcionamiento</a></li>
+                <li><a href="#componentes">Componentes</a></li>
+                <li><a href="#documentacion">Documentación</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 1. Inicio -->
+    <section id="inicio">
+        <div class="hero-text">
+            <h1>Ascensor Inteligente ELEVA2</h1>
+            <p>Prototipo mecatrónico de 3 niveles con control de acceso RFID, automatización con Arduino Uno y sistema
+                inteligente de transporte seguro.</p>
+            <a href="#que-es" class="btn-primary">Conocer el proyecto</a>
+        </div>
+        <div class="hero-graphic">
+            <div class="elevator-building">
+                <div class="floor">P3</div>
+                <div class="floor">P2</div>
+                <div class="floor">P1</div>
+                <div class="cabin-indicator" id="cabin"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ¿Qué es Eleva2? -->
+    <section id="que-es">
+        <h2 class="section-title">¿Qué es Eleva2?</h2>
+        <p class="section-subtitle">Una solución de elevador automatizado diseñada para mejorar la seguridad y la
+            experiencia de transporte vertical restringido.</p>
+
+        <div class="about-cards">
+            <div class="card">
+                <h3>🎯 El Objetivo</h3>
+                <p>Desarrollar un prototipo funcional de ascensor de 3 niveles controlado mediante Arduino Uno R3,
+                    integrando control de acceso seguro y detección automatizada.</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ El Problema</h3>
+                <p>Garantizar que solo personal o usuarios autorizados puedan desplazarse entre pisos en entornos con
+                    acceso restringido o seguridad diferenciada.</p>
+            </div>
+            <div class="card">
+                <h3>🐾 Funcionalidades Especiales</h3>
+                <p>Incorpora lectura de tarjetas/llaveros RFID configurables para brindar acceso automático y
+                    personalizado a personas, niños o mascotas hacia su nivel asignado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ¿Cómo funciona? -->
+    <section id="como-funciona">
+        <h2 class="section-title">¿Cómo funciona?</h2>
+        <p class="section-subtitle">Haz clic en cada paso para ver la simulación interactiva del movimiento de la
+            cabina.</p>
+
+        <div class="steps-container">
+            <div class="step-box" onclick="moveCabin('15px')">
+                <div class="step-number">1</div>
+                <h3>Identificación RFID</h3>
+                <p>El usuario aproxima su tarjeta o llavero clave al lector RC522 para validar su acceso en el sistema.
+                </p>
+            </div>
+            <div class="step-box" onclick="moveCabin('130px')">
+                <div class="step-number">2</div>
+                <h3>Autorización de Piso</h3>
+                <p>El sistema valida las credenciales, muestra el mensaje en la pantalla LCD y habilita la selección del
+                    nivel de destino.</p>
+            </div>
+            <div class="step-box" onclick="moveCabin('250px')">
+                <div class="step-number">3</div>
+                <h3>Control y Movimiento</h3>
+                <p>El motor paso a paso traslada la cabina, los microswitches verifican la llegada y los servomotores
+                    operan las puertas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Componentes y tecnología -->
+    <section id="componentes">
+        <h2 class="section-title">Componentes y Tecnología</h2>
+        <p class="section-subtitle">Hardware y tecnología embebida que componen el prototipo ElevatorSec.</p>
+
+        <div class="components-grid">
+            <div class="component-item">
+                <div class="component-icon">💻</div>
+                <div class="component-info">
+                    <h4>Arduino Uno R3</h4>
+                    <p>Microcontrolador principal del sistema</p>
+                </div>
+            </div>
+            <div class="component-item">
+                <div class="component-icon">🏷️</div>
+                <div class="component-info">
+                    <h4>Lector RFID RC522</h4>
+                    <p>Módulo de autenticación por radiofrecuencia</p>
+                </div>
+            </div>
+            <div class="component-item">
+                <div class="component-icon">📟</div>
+                <div class="component-info">
+                    <h4>Pantalla LCD 1602 I2C</h4>
+                    <p>Visualización de estado e interfaz de usuario</p>
+                </div>
+            </div>
+            <div class="component-item">
+                <div class="component-icon">🔘</div>
+                <div class="component-info">
+                    <h4>Pulsadores de Entrada</h4>
+                    <p>Selección manual de niveles en cabina</p>
+                </div>
+            </div>
+            <div class="component-item">
+                <div class="component-icon">⚙️</div>
+                <div class="component-info">
+                    <h4>Microswitches</h4>
+                    <p>Sensores finales de carrera para nivelación</p>
+                </div>
+            </div>
+            <div class="component-item">
+                <div class="component-icon">🔌</div>
+                <div class="component-info">
+                    <h4>Motores & Servomotores</h4>
+                    <p>Motor paso a paso (tracción) y Servo SG90 (puertas)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Documentación -->
+    <section id="documentacion">
+        <h2 class="section-title">Documentación</h2>
+        <p class="section-subtitle">Accede al repositorio, código fuente y material multimedia del proyecto.</p>
+
+        <div class="docs-container">
+            <div class="docs-buttons">
+                <a href="[suspicious link removed]" target="_blank" rel="noopener" class="btn-primary">Repositorio
+                    GitHub</a>
+                <a href="[suspicious link removed]" target="_blank" rel="noopener" class="btn-secondary">Código Fuente
+                    .ino</a>
+            </div>
+
+            <div class="video-placeholder">
+                <p>🎥 <strong>Próximamente: Video Demostrativo</strong></p>
+                <p class="video-subtext">Demostración en vivo del funcionamiento de la maqueta y simulación de puertas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2026 Proyecto ELEVA2 / ElevatorSec — Exposición Técnica</p>
+    </footer>
+
+    <!-- Script interactivo integrado -->
+    <script>
+        function moveCabin(topPosition) {
+            const cabin = document.getElementById('cabin');
+            if (cabin) {
+                cabin.style.top = topPosition;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
