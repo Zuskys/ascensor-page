@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ELEVA2 - Ascensor Inteligente</title>
-
-    <!-- Estilos CSS externos -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -16,133 +14,244 @@
     <header>
         <nav>
             <a href="#inicio" class="logo">ELEVA<span>2</span></a>
-            <ul class="nav-links">
+            <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#que-es">¿Qué es?</a></li>
                 <li><a href="#como-funciona">Funcionamiento</a></li>
+                <li><a href="#perfiles">Perfiles</a></li>
                 <li><a href="#componentes">Componentes</a></li>
                 <li><a href="#documentacion">Documentación</a></li>
+                <li><a href="#equipo">Equipo</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- 1. Inicio -->
-    <section id="inicio">
+    <!-- Inicio -->
+    <section id="inicio" class="hero">
         <div class="hero-text">
-            <h1>Ascensor Inteligente ELEVA2</h1>
-            <p>Prototipo mecatrónico de 3 niveles con control de acceso RFID, automatización con Arduino Uno y sistema
-                inteligente de transporte seguro.</p>
-            <a href="#que-es" class="btn-primary">Conocer el proyecto</a>
+            <h1>Un ascensor <em>para toda la familia</em></h1>
+            <p class="hero-lead">Eleva2 reconoce quién lo usa. Las mascotas viajan solas hasta su piso con un llavero y
+                los niños con su tarjeta, sin tocar ningún botón.</p>
+            <div class="hero-actions">
+                <a href="#perfiles" class="btn-primary">Probar el simulador</a>
+                <a href="#que-es" class="btn-secondary">Conocer el proyecto</a>
+            </div>
         </div>
-        <div class="hero-graphic">
-            <div class="elevator-building">
-                <div class="floor">P3</div>
-                <div class="floor">P2</div>
-                <div class="floor">P1</div>
-                <div class="cabin-indicator" id="cabin"></div>
+
+        <div class="hero-visual">
+            <div class="hero-card">
+                <div class="hero-flow">
+                    <div class="flow-item"><span class="flow-icon">🐶</span><span>Llavero (mascota)<br>o tarjeta
+                            (niño/a)</span></div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-item"><span class="flow-icon">📡</span><span>Lector<br>RFID</span></div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-item"><span class="flow-icon">🛗</span><span>Viaje<br>automático</span></div>
+                </div>
+                <div class="lcd lcd-static">
+                    <span>Hola Luna!</span>
+                    <span>Yendo a Piso 1</span>
+                </div>
+                <p class="figure-caption">Sin botones: el llavero o la tarjeta le dicen al ascensor a qué piso ir.</p>
             </div>
         </div>
     </section>
 
-    <!-- 2. ¿Qué es Eleva2? -->
+    <!-- 1. ¿Qué es Eleva2? -->
     <section id="que-es">
-        <h2 class="section-title">¿Qué es Eleva2?</h2>
-        <p class="section-subtitle">Una solución de elevador automatizado diseñada para mejorar la seguridad y la
-            experiencia de transporte vertical restringido.</p>
+        <h2 class="section-title"><span>1.</span> ¿Qué es Eleva2?</h2>
+        <p class="section-subtitle">Una maqueta de ascensor inteligente de tres niveles (Planta Baja, Piso 1 y
+            Piso 2) con acceso restringido mediante tecnología RFID, pensada para brindar seguridad y facilidad de
+            uso.</p>
+
+        <div class="focus-banner">
+            <span class="focus-icon">🔑</span>
+            <div>
+                <h3>El foco del proyecto</h3>
+                <p>Que los <strong>niños</strong> y las <strong>mascotas</strong> también puedan usar el ascensor. Las
+                    mascotas reciben un llavero RFID y los niños una tarjeta: al apoyarlo, Eleva2 lo reconoce como
+                    inquilino restringido y lo lleva directo al piso donde vive, sin que tenga que (ni pueda) tocar la
+                    botonera.</p>
+            </div>
+        </div>
 
         <div class="about-cards">
             <div class="card">
-                <h3>🎯 El Objetivo</h3>
-                <p>Desarrollar un prototipo funcional de ascensor de 3 niveles controlado mediante Arduino Uno R3,
-                    integrando control de acceso seguro y detección automatizada.</p>
+                <h3>🎯 El objetivo</h3>
+                <p>Construir una maqueta a escala de un ascensor de 3 pisos utilizando Arduino Uno, que lea
+                    tarjetas RFID, controle el motor de tracción, frene con precisión en cada piso y automatice la
+                    puerta.</p>
             </div>
             <div class="card">
-                <h3>🛡️ El Problema</h3>
-                <p>Garantizar que solo personal o usuarios autorizados puedan desplazarse entre pisos en entornos con
-                    acceso restringido o seguridad diferenciada.</p>
+                <h3>🛡️ El problema</h3>
+                <p>Los niños y las mascotas no pueden (ni deben) operar una botonera, pero igual necesitan moverse
+                    entre pisos de forma segura. Además, nadie no autorizado debería poder usar el ascensor.</p>
             </div>
             <div class="card">
-                <h3>🐾 Funcionalidades Especiales</h3>
-                <p>Incorpora lectura de tarjetas/llaveros RFID configurables para brindar acceso automático y
-                    personalizado a personas, niños o mascotas hacia su nivel asignado.</p>
+                <h3>🐾 La solución</h3>
+                <p>El sistema maneja tres caminos según la tarjeta o llavero que se apoye: inquilino normal,
+                    inquilino restringido (niños y mascotas) y tarjeta no registrada.</p>
             </div>
         </div>
     </section>
 
-    <!-- 3. ¿Cómo funciona? -->
+    <!-- 2. ¿Cómo funciona? -->
     <section id="como-funciona">
-        <h2 class="section-title">¿Cómo funciona?</h2>
-        <p class="section-subtitle">Haz clic en cada paso para ver la simulación interactiva del movimiento de la
-            cabina.</p>
+        <h2 class="section-title"><span>2.</span> ¿Cómo funciona?</h2>
+        <p class="section-subtitle">El recorrido completo de un viaje, desde que se apoya la tarjeta hasta que el
+            sistema vuelve a bloquearse.</p>
 
         <div class="steps-container">
-            <div class="step-box" onclick="moveCabin('15px')">
+            <div class="step-box">
                 <div class="step-number">1</div>
                 <h3>Identificación RFID</h3>
-                <p>El usuario aproxima su tarjeta o llavero clave al lector RC522 para validar su acceso en el sistema.
-                </p>
+                <p>El usuario apoya su tarjeta o llavero en el lector RC522, que lee el UID a 13,56 MHz.</p>
             </div>
-            <div class="step-box" onclick="moveCabin('130px')">
+            <div class="step-box">
                 <div class="step-number">2</div>
-                <h3>Autorización de Piso</h3>
-                <p>El sistema valida las credenciales, muestra el mensaje en la pantalla LCD y habilita la selección del
-                    nivel de destino.</p>
+                <h3>Autorización</h3>
+                <p>El sistema valida la credencial, muestra un mensaje en la pantalla LCD y, según el perfil,
+                    habilita la botonera o define el piso de destino.</p>
             </div>
-            <div class="step-box" onclick="moveCabin('250px')">
+            <div class="step-box">
                 <div class="step-number">3</div>
-                <h3>Control y Movimiento</h3>
-                <p>El motor paso a paso traslada la cabina, los microswitches verifican la llegada y los servomotores
-                    operan las puertas.</p>
+                <h3>Movimiento y parada</h3>
+                <p>El motor DC, controlado con el driver L298N, mueve la cabina. Los microswitches detectan la
+                    llegada y detienen el motor en el piso exacto.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-number">4</div>
+                <h3>Puerta y bloqueo</h3>
+                <p>Un motor paso a paso abre la puerta deslizante, espera unos segundos y la cierra. Después el
+                    sistema se bloquea hasta la próxima tarjeta autorizada.</p>
             </div>
         </div>
     </section>
 
-    <!-- 4. Componentes y tecnología -->
+    <!-- 3. Perfiles + simulador -->
+    <section id="perfiles">
+        <h2 class="section-title"><span>3.</span> Tres perfiles de acceso</h2>
+        <p class="section-subtitle">Probá el simulador: elegí una tarjeta y mirá cómo reacciona la pantalla LCD, la
+            botonera y la cabina.</p>
+
+        <div class="sim">
+            <div class="sim-panel">
+                <div class="elevator-building">
+                    <div class="floor"><span>P2</span></div>
+                    <div class="floor"><span>P1</span></div>
+                    <div class="floor"><span>PB</span></div>
+                    <div class="cabin" id="cabin">
+                        <div class="door l"></div>
+                        <div class="door r"></div>
+                    </div>
+                </div>
+
+                <div class="lcd" aria-live="polite">
+                    <span id="lcd1">ELEVA2</span>
+                    <span id="lcd2">Apoye su tarjeta</span>
+                </div>
+
+                <div class="botonera" id="botonera">
+                    <button type="button" data-piso="0" disabled>PB</button>
+                    <button type="button" data-piso="1" disabled>P1</button>
+                    <button type="button" data-piso="2" disabled>P2</button>
+                </div>
+
+                <p class="figure-caption">Simulación de la maqueta: cabina, pantalla LCD 16x2 y botonera.</p>
+            </div>
+
+            <div class="profiles">
+                <div class="card profile">
+                    <h3>1. Inquilino normal</h3>
+                    <p>Al apoyar la tarjeta, el sistema desbloquea la botonera y muestra «¡Bienvenido! Seleccione
+                        piso». El usuario elige el piso al que quiere ir.</p>
+                    <button type="button" class="btn-sim" data-perfil="normal">Simular tarjeta normal</button>
+                </div>
+                <div class="card profile profile-main">
+                    <h3>2. Inquilino restringido: niños y mascotas</h3>
+                    <p>Cada mascota recibe un llavero RFID y cada niño o niña una
+                        tarjeta. Al apoyarlo, la pantalla da una bienvenida personalizada y la cabina viaja sola al piso
+                        asignado, sin
+                        permitir elegir ningún botón.</p>
+                    <div class="btn-row">
+                        <button type="button" class="btn-sim" data-perfil="nino">🧒 Tarjeta de niño/a</button>
+                        <button type="button" class="btn-sim" data-perfil="mascota">🐾 Llavero de mascota</button>
+                    </div>
+                </div>
+                <div class="card profile">
+                    <h3>3. Tarjeta no registrada</h3>
+                    <p>Se muestra «Acceso no autorizado» y la botonera permanece bloqueada: el ascensor no se mueve
+                        aunque se presionen los botones.</p>
+                    <button type="button" class="btn-sim" data-perfil="denegado">Simular tarjeta desconocida</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Componentes -->
     <section id="componentes">
-        <h2 class="section-title">Componentes y Tecnología</h2>
-        <p class="section-subtitle">Hardware y tecnología embebida que componen el prototipo ElevatorSec.</p>
+        <h2 class="section-title"><span>4.</span> Componentes y tecnología</h2>
+        <p class="section-subtitle">Hardware que compone el prototipo Eleva2.</p>
 
         <div class="components-grid">
             <div class="component-item">
                 <div class="component-icon">💻</div>
                 <div class="component-info">
                     <h4>Arduino Uno R3</h4>
-                    <p>Microcontrolador principal del sistema</p>
+                    <p>Cerebro del sistema: procesa sensores y ejecuta el programa</p>
                 </div>
             </div>
             <div class="component-item">
                 <div class="component-icon">🏷️</div>
                 <div class="component-info">
                     <h4>Lector RFID RC522</h4>
-                    <p>Módulo de autenticación por radiofrecuencia</p>
+                    <p>Lee tarjetas a 13,56 MHz y distingue los perfiles</p>
                 </div>
             </div>
             <div class="component-item">
                 <div class="component-icon">📟</div>
                 <div class="component-info">
-                    <h4>Pantalla LCD 1602 I2C</h4>
-                    <p>Visualización de estado e interfaz de usuario</p>
+                    <h4>Pantalla LCD 16x2 I2C</h4>
+                    <p>Muestra mensajes de estado y bienvenida</p>
                 </div>
             </div>
             <div class="component-item">
-                <div class="component-icon">🔘</div>
+                <div class="component-icon">⚡</div>
                 <div class="component-info">
-                    <h4>Pulsadores de Entrada</h4>
-                    <p>Selección manual de niveles en cabina</p>
+                    <h4>Driver L298N + motor DC</h4>
+                    <p>Puente H que controla el sentido y la velocidad de la cabina</p>
+                </div>
+            </div>
+            <div class="component-item">
+                <div class="component-icon">🚪</div>
+                <div class="component-info">
+                    <h4>28BYJ-48 + ULN2003</h4>
+                    <p>Motor paso a paso que abre y cierra la puerta deslizante</p>
                 </div>
             </div>
             <div class="component-item">
                 <div class="component-icon">⚙️</div>
                 <div class="component-info">
-                    <h4>Microswitches</h4>
-                    <p>Sensores finales de carrera para nivelación</p>
+                    <h4>Microswitches (x3)</h4>
+                    <p>Finales de carrera para detener la cabina en cada piso</p>
+                </div>
+            </div>
+            <div class="component-item">
+                <div class="component-icon">🔘</div>
+                <div class="component-info">
+                    <h4>Pulsadores de piso (x3)</h4>
+                    <p>Botonera manual para el inquilino normal</p>
                 </div>
             </div>
             <div class="component-item">
                 <div class="component-icon">🔌</div>
                 <div class="component-info">
-                    <h4>Motores & Servomotores</h4>
-                    <p>Motor paso a paso (tracción) y Servo SG90 (puertas)</p>
+                    <h4>Fuente externa 12 V</h4>
+                    <p>Alimenta la etapa de potencia y evita reinicios del Arduino</p>
                 </div>
             </div>
         </div>
@@ -150,40 +259,45 @@
 
     <!-- 5. Documentación -->
     <section id="documentacion">
-        <h2 class="section-title">Documentación</h2>
-        <p class="section-subtitle">Accede al repositorio, código fuente y material multimedia del proyecto.</p>
+        <h2 class="section-title"><span>5.</span> Documentación</h2>
+        <p class="section-subtitle">Accedé al repositorio con todo nuestro codigo.</p>
 
         <div class="docs-container">
             <div class="docs-buttons">
-                <a href="[suspicious link removed]" target="_blank" rel="noopener" class="btn-primary">Repositorio
-                    GitHub</a>
-                <a href="[suspicious link removed]" target="_blank" rel="noopener" class="btn-secondary">Código Fuente
-                    .ino</a>
+                <!-- TODO: reemplazar "#" por el link real del repositorio de GitHub (elevador-inteligente-EXPOITES) -->
+                <a href="https://github.com/Zuskys/elevador-inteligente-EXPOITES" target="_blank" rel="noopener"
+                    class="btn-primary">Repositorio GitHub</a>
+                <p class="figure-caption">El repositorio incluye el código completo, las librerías utilizadas (SPI,
+                    MFRC522, LiquidCrystal_I2C y Stepper) y el historial de versiones.</p>
             </div>
-
-            <div class="video-placeholder">
-                <p>🎥 <strong>Próximamente: Video Demostrativo</strong></p>
-                <p class="video-subtext">Demostración en vivo del funcionamiento de la maqueta y simulación de puertas.
-                </p>
-            </div>
-        </div>
     </section>
 
-    <!-- Pie de página -->
+    <!-- 6. Equipo y saludo -->
+    <section id="equipo">
+        <h2 class="section-title"><span>6.</span> Equipo</h2>
+        <p class="section-subtitle">Un saludo de parte de quienes hicieron posible Eleva2.</p>
+
+        <div class="greeting">
+            <p class="greeting-title">¡Gracias por visitarnos!</p>
+            <p>Eleva2 nació para aplicar lo aprendido en electrónica analógica, digital y programación. Esperamos que
+                les haya gustado el
+                recorrido tanto como a nosotros armarla.</p>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-member">Peralta Lilian</div>
+            <div class="team-member">Fernández Franco</div>
+            <div class="team-member">Contreras Constanza</div>
+            <div class="team-member">Scoles Cecilia</div>
+        </div>
+        <p class="team-prof"><strong>Profesor titular:</strong> Abella Maximiliano</p>
+    </section>
+
     <footer>
-        <p>© 2026 Proyecto ELEVA2 / ElevatorSec — Exposición Técnica</p>
+        <p>© 2026 Proyecto ELEVA2</p>
     </footer>
 
-    <!-- Script interactivo integrado -->
-    <script>
-        function moveCabin(topPosition) {
-            const cabin = document.getElementById('cabin');
-            if (cabin) {
-                cabin.style.top = topPosition;
-            }
-        }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 
 </html>
